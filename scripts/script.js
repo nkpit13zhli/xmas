@@ -122,6 +122,15 @@ function timer()
 	if(runMove)
 	{
 		seconds++;
+
+		if(seconds >= 120)
+		{
+			runMove = false;
+			seconds = 0;
+			alert("Time is up!");
+			$('#timer').html("Time: 00:00");
+		}
+
 		var minutes = Math.floor(seconds / 60);
 		var seconds2 = Math.floor(seconds - minutes * 60);
 
