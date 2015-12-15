@@ -1,3 +1,6 @@
+//Controls timer
+var seconds;
+
 //Controls santas movement
 var runMove = false;
 
@@ -27,6 +30,7 @@ $(document).ready(function() {
 	$(document).snowfall({flakeCount : 20, maxSpeed : 10, shadow: true, minSize: 10, maxSize: 20, round: true});
 	getTimes();
 	setInterval(function(){getTimes()}, 1000);
+	setInterval(function(){timer()}, 1000)
 	setInterval(function(){moveSanta()}, 1);
 });
 
@@ -113,7 +117,28 @@ function moveSanta()
 	$('.santa').offset({left: xPos, top: yPos});
 }
 
+function timer()
+{
+	if(runMove)
+	{
+		seconds++;
+		var minutes = Math.floor(seconds / 60);
+		var seconds2 = Math.floor(seconds - minutes * 60);
+
+		if(minutes < 10) { minutes = "0" + minutes; }
+		if(seconds2 < 10) { seconds2 = "0" + seconds2; }
+
+		$('#timer').html("Time: " + minutes + ":" + seconds2);
+	}
+}
+
 $(document).on('click touchstart', '.santa', function(e){
 	e.preventDefault();
 	runMove = !runMove;
+	if(runMove)
+	{
+		seconds = 0;
+		$('#timer').html("Time: 00:00");
+		$.playSound('sounds/woohoo');
+	}
 });
