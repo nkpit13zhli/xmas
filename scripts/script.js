@@ -1,23 +1,19 @@
-/*var santaX;
-var santaDir = 'left';
-var santaChange = 0;
-var santaChangeDir = 'up';
-*/
-
+//Controls santas direction
 var xDir = false; //false = right
 var yDir = false; //false = down
 var zDir = false; //false = front
 
+//Controls santas speed
 var xSpeed = 10;
 var ySpeed = 10;
 var zSpeed = 10;
 
+//Controls santas acceleration
 var xAccel = 10;
 var yAccel = 10;
 var zAccel = 10;
 
 $(document).ready(function() {
-	//$("html").niceScroll({width:"8px"});
 	santaX = $('.santa').offset().left;
 	$(document).snowfall({flakeCount : 20, maxSpeed : 10, shadow: true, minSize: 10, maxSize: 20, round: true});
 	getTimes();
@@ -28,68 +24,27 @@ $(document).ready(function() {
 
 function getTimes()
 {
-	$.post( "php/until_date.php", {targetDate: '2015-12-24 06:00'}, function( data ) {
-		var Data = data.split(':');
-		$('#christmas_days').html(Data[0]);
-		$('#christmas_hours').html(Data[1]);
-		$('#christmas_minutes').html(Data[2]);
-		$('#christmas_seconds').html(Data[3]);
-	});
+	$('#christmas_days').html(data[0]);
+	$('#christmas_hours').html(data[1]);
+	$('#christmas_minutes').html(data[2]);
+	$('#christmas_seconds').html(data[3]);
 
-	$.post( "php/until_date.php", {targetDate: '2016-01-01 00:00'}, function( data ) {
-		var Data = data.split(':');
-		$('#newyear_days').html(Data[0]);
-		$('#newyear_hours').html(Data[1]);
-		$('#newyear_minutes').html(Data[2]);
-		$('#newyear_seconds').html(Data[3]);
-	});
+	$('#newyear_days').html(data[0]);
+	$('#newyear_hours').html(data[1]);
+	$('#newyear_minutes').html(data[2]);
+	$('#newyear_seconds').html(data[3]);
 }
 
-/*function moveSanta()
+function calculateDiff()
 {
-	if(santaX < 1)
-	{
-		santaDir = 'right';
-		$.playSound('sounds/bounce');
-	}
-	else if(santaX > 1239)
-	{
-		santaDir = 'left';
-		$.playSound('sounds/bounce');
-	}
 
-	if(santaDir === 'left')
-	{
-		santaX -= santaChange;
-	}
-	else
-	{
-		santaX += santaChange;
-	}
-
-	$('.santa').offset({left: santaX});
-
-	if(santaChange < 0.1)
-	{
-		santaChangeDir = 'up';
-	}
-	else if(santaChange > 10)
-	{
-		santaChangeDir = 'down';
-	}
-
-	if(santaChangeDir === 'up')
-	{
-		santaChange += 0.05;
-	}
-	else
-	{
-		santaChange -= 0.05;
-	}
-}*/
+}
 
 function moveSanta()
 {
+	var	docWidth = $(document).width();
+	var docHeight = $(document).height();
+
 
 }
 
