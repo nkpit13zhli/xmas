@@ -123,14 +123,6 @@ function timer()
 	{
 		seconds++;
 
-		if(seconds >= 120)
-		{
-			runMove = false;
-			seconds = 0;
-			alert("Time is up!");
-			$('#timer').html("Time: 00:00");
-		}
-
 		var minutes = Math.floor(seconds / 60);
 		var seconds2 = Math.floor(seconds - minutes * 60);
 
@@ -138,6 +130,14 @@ function timer()
 		if(seconds2 < 10) { seconds2 = "0" + seconds2; }
 
 		$('#timer').html("Time: " + minutes + ":" + seconds2);
+
+		if(seconds >= 120)
+		{
+			runMove = false;
+			seconds = 0;
+			alert("Time is up!");
+			$('#timer').html("Time: 00:00");
+		}
 	}
 }
 
